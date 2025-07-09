@@ -10,11 +10,29 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ * Clase de utilidad para renderizar fórmulas LaTeX en componentes Swing o guardarlas como imágenes.
+ * Proporciona métodos para convertir expresiones matemáticas en formato LaTeX a representaciones visuales.
+ *
+ * @author Fer
+ * @author Jonathan
+ */
 public final class FormatoLatex {
     
+    /**
+     * Constructor por defecto.
+     */
     public FormatoLatex() {
     }
     
+    /**
+     * Renderiza una fórmula LaTeX como imagen PNG y la guarda en la ruta especificada.
+     * Utiliza colores predeterminados: fondo blanco y texto negro.
+     *
+     * @param formulaLatex La expresión LaTeX que se desea renderizar
+     * @param texSize El tamaño del texto
+     * @param ruta La ruta completa donde se guardará el archivo PNG
+     */
     public static void renderizarFormula(String formulaLatex, float texSize, String ruta) {
         try {
             TeXFormula formula = new TeXFormula(formulaLatex);
@@ -54,6 +72,16 @@ public final class FormatoLatex {
         }
     }
     
+    /**
+     * Renderiza una fórmula LaTeX como imagen PNG y la guarda en la ruta especificada,
+     * permitiendo personalizar los colores de fondo y texto.
+     *
+     * @param formulaLatex La expresión LaTeX que se desea renderizar
+     * @param texSize El tamaño del texto
+     * @param ruta La ruta completa donde se guardará el archivo PNG
+     * @param background El color de fondo de la imagen
+     * @param foreground El color del texto de la fórmula
+     */
     public static void renderizarFormula(String formulaLatex, float texSize, String ruta, Color background, Color foreground) {
         try {
             TeXFormula formula = new TeXFormula(formulaLatex);
@@ -93,6 +121,14 @@ public final class FormatoLatex {
         }
     }
 
+    /**
+     * Establece una fórmula matemática LaTeX como icono de un JLabel.
+     * Reemplaza el texto del JLabel con la representación visual de la fórmula.
+     *
+     * @param label El JLabel donde se mostrará la fórmula
+     * @param formulaLatex La expresión LaTeX que se desea mostrar
+     * @param textSize El tamaño del texto
+     */
     public static void establecerMathTex(JLabel label, String formulaLatex, float textSize) {
         try {
             TeXFormula formula = new TeXFormula(formulaLatex);
@@ -106,6 +142,14 @@ public final class FormatoLatex {
         }
     }
     
+    /**
+     * Establece texto normal en formato LaTeX como icono de un JLabel.
+     * Utiliza el comando \text{} de LaTeX para formatear el texto.
+     *
+     * @param label El JLabel donde se mostrará el texto
+     * @param tex El texto que se desea formatear y mostrar
+     * @param texSize El tamaño del texto
+     */
     public static void establecerTex(JLabel label, String tex, float texSize) {
         try {
             String latex = "\\text{";
@@ -127,18 +171,38 @@ public final class FormatoLatex {
         }
     }
 
+    /**
+     * Crea un nuevo JLabel con una fórmula matemática LaTeX.
+     *
+     * @param formulaLatex La expresión LaTeX que se desea mostrar
+     * @param textSize El tamaño del texto
+     * @return Un JLabel con la fórmula LaTeX renderizada como icono
+     */
     public static JLabel crearMathTex(String formulaLatex, float textSize) {
         JLabel label = new JLabel();
         establecerMathTex(label, formulaLatex, textSize);
         return label;
     }
     
+    /**
+     * Crea un nuevo JLabel con texto normal formateado en LaTeX.
+     *
+     * @param text El texto que se desea formatear y mostrar
+     * @param textSize El tamaño del texto
+     * @return Un JLabel con el texto formateado en LaTeX como icono
+     */
     public static JLabel crearTex(String text, float textSize) {
         JLabel label = new JLabel();
         establecerTex(label, text, textSize);
         return label;
     }
 
+    /**
+     * Muestra una fórmula matemática LaTeX en una ventana independiente.
+     *
+     * @param formulaLatex La expresión LaTeX que se desea mostrar
+     * @param textSize El tamaño del texto
+     */
     public static void mostrarFormulaEnVentana(String formulaLatex, float textSize) {
         JFrame ventana = new JFrame("Formula latex");
         ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -153,6 +217,12 @@ public final class FormatoLatex {
         ventana.setVisible(true);
     }
     
+    /**
+     * Muestra texto normal formateado en LaTeX en una ventana independiente.
+     *
+     * @param text El texto que se desea formatear y mostrar
+     * @param textSize El tamaño del texto
+     */
     public static void mostrarTexEnVentana(String text, float textSize) {
         JFrame ventana = new JFrame("Formula latex");
         ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -167,32 +237,36 @@ public final class FormatoLatex {
         ventana.setVisible(true);
     }
  
-public static void mostrarMatrizVentana(String[][] matriz, float tamaño) {
-    try {
-        StringBuilder latex = new StringBuilder();
-        latex.append("\\begin{bmatrix}");
+    /**
+     * Muestra una matriz en formato LaTeX en una ventana independiente.
+     * Utiliza el entorno bmatrix de LaTeX para representar la matriz.
+     *
+     * @param matriz Una matriz bidimensional de cadenas, donde cada elemento es una fila de la matriz
+     * @param tamaño El tamaño del texto
+     */
+    public static void mostrarMatrizVentana(String[][] matriz, float tamaño) {
+        try {
+            StringBuilder latex = new StringBuilder();
+            latex.append("\\begin{bmatrix}");
 
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                latex.append(matriz[i][j]);
-                if (j < matriz[i].length - 1) {
-                    latex.append(" & ");
+            for (int i = 0; i < matriz.length; i++) {
+                for (int j = 0; j < matriz[i].length; j++) {
+                    latex.append(matriz[i][j]);
+                    if (j < matriz[i].length - 1) {
+                        latex.append(" & ");
+                    }
+                }
+                if (i < matriz.length - 1) {
+                    latex.append(" \\\\ ");
                 }
             }
-            if (i < matriz.length - 1) {
-                latex.append(" \\\\ ");
-            }
+
+            latex.append("\\end{bmatrix}");
+
+            mostrarFormulaEnVentana(latex.toString(), tamaño);
+
+        } catch (Exception e) {
+            System.err.println("Error al mostrar la matriz: " + e.getMessage());
         }
-
-        latex.append("\\end{bmatrix}");
-
-        mostrarFormulaEnVentana(latex.toString(), tamaño);
-
-    } catch (Exception e) {
-        System.err.println("Error al mostrar la matriz: " + e.getMessage());
     }
-}
-
-
-
 }
