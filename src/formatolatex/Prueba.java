@@ -100,7 +100,7 @@ public class Prueba extends javax.swing.JFrame {
         // Mostrar texto en ventana
         FormatoLatex.mostrarTexEnVentana("Find definitions and references for functions and other symbols in this file by clicking a symbol below or in the code.", 18);
     }
-      
+  
     /**
      * @param args the command line arguments
      */
@@ -127,7 +127,7 @@ public class Prueba extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -166,4 +166,33 @@ public final class FormatoLatex {
         ventana.add(etiqueta);
         ventana.setVisible(true);
     }
+ 
+public static void mostrarMatrizVentana(String[][] matriz, float tamaño) {
+    try {
+        StringBuilder latex = new StringBuilder();
+        latex.append("\\begin{bmatrix}");
+
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                latex.append(matriz[i][j]);
+                if (j < matriz[i].length - 1) {
+                    latex.append(" & ");
+                }
+            }
+            if (i < matriz.length - 1) {
+                latex.append(" \\\\ ");
+            }
+        }
+
+        latex.append("\\end{bmatrix}");
+
+         mostrarFormulaenVentana(latex.toString(), tamaño);
+
+    } catch (Exception e) {
+        System.err.println("Error al mostrar la matriz: " + e.getMessage());
+    }
+}
+
+
+
 }
