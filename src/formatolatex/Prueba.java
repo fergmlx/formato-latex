@@ -19,7 +19,7 @@ public class Prueba extends javax.swing.JFrame {
      */
     public Prueba() {
         initComponents();
-        prueba5();
+        prueba6();
     }
 
     /**
@@ -99,6 +99,16 @@ public class Prueba extends javax.swing.JFrame {
     private void prueba5() {
         // Mostrar texto en ventana
         FormatoLatex.mostrarTexEnVentana("Find definitions and references for functions and other symbols in this file by clicking a symbol below or in the code.", 18);
+    }
+    
+    private void prueba6() {
+        // Genera la matriz
+        String[][] matrizEjemplo = {
+            {"1", "2", "3"},
+            {"4", "5", "6"},
+            {"7", "8", "9"},
+        };
+        FormatoLatex.mostrarMatrizVentana(matrizEjemplo, 30f);
     }
   
     /**

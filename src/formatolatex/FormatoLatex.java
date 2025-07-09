@@ -186,7 +186,7 @@ public static void mostrarMatrizVentana(String[][] matriz, float tamaño) {
 
         latex.append("\\end{bmatrix}");
 
-         mostrarFormulaenVentana(latex.toString(), tamaño);
+        mostrarFormulaEnVentana(latex.toString(), tamaño);
 
     } catch (Exception e) {
         System.err.println("Error al mostrar la matriz: " + e.getMessage());
