@@ -5,6 +5,7 @@
 package formatolatex;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JLabel;
 
 /**
@@ -18,7 +19,7 @@ public class Prueba extends javax.swing.JFrame {
      */
     public Prueba() {
         initComponents();
-        prueba();
+        prueba5();
     }
 
     /**
@@ -72,21 +73,34 @@ public class Prueba extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void prueba() {
+    private void prueba1() {
         // Crear un JLabel con una formula en LaTeX
         JLabel lbl1 = FormatoLatex.crearMathTex("\\int_a^b f(x)\\ dx", 30);
         jPanel1.setLayout(new BorderLayout());
         jPanel1.add(lbl1);
-        
+    }
+    
+    private void prueba2() {
         // Establecer formula LaTeX en un JLabel previamente creado
         FormatoLatex.establecerMathTex(lblPrueba, "\\int_a^b f(x)\\ dx", 30);
-        
-        // Renderizar imagen
-        FormatoLatex.renderizarFormula("\\int_a^b f(x)\\ dx", 30, "integral");
-       
-        FormatoLatex.mostrarFormulaenVentana("\\int_a^b f(x)\\ dx", 30);
     }
-     
+    
+    private void prueba3() {
+        // Renderizar imagen
+        FormatoLatex.renderizarFormula("\\int_a^b f(t)\\ dt", 35, "C:\\Users\\Fer\\Pictures\\imagen.png");
+        FormatoLatex.renderizarFormula("\\int_a^b f(t)\\ dt", 35, "C:\\Users\\Fer\\Pictures\\imagen1.png", Color.BLACK, Color.WHITE);
+    }
+    
+    private void prueba4() {
+        // Mostrar formula en ventana
+        FormatoLatex.mostrarFormulaEnVentana("\\text{Esto es } x_1 = \\pi", 18);
+    }
+    
+    private void prueba5() {
+        // Mostrar texto en ventana
+        FormatoLatex.mostrarTexEnVentana("Find definitions and references for functions and other symbols in this file by clicking a symbol below or in the code.", 18);
+    }
+      
     /**
      * @param args the command line arguments
      */
