@@ -19,6 +19,7 @@ public class Prueba extends javax.swing.JFrame {
     public Prueba() {
         initComponents();
         prueba();
+
     }
 
     /**
@@ -77,16 +78,25 @@ public class Prueba extends javax.swing.JFrame {
         JLabel lbl1 = FormatoLatex.crearMathTex("\\int_a^b f(x)\\ dx", 30);
         jPanel1.setLayout(new BorderLayout());
         jPanel1.add(lbl1);
-        
+
         // Establecer formula LaTeX en un JLabel previamente creado
         FormatoLatex.establecerMathTex(lblPrueba, "\\int_a^b f(x)\\ dx", 30);
-        
+
         // Renderizar imagen
         FormatoLatex.renderizarFormula("\\int_a^b f(x)\\ dx", 30, "integral");
-       
+
         FormatoLatex.mostrarFormulaenVentana("\\int_a^b f(x)\\ dx", 30);
+
+        String[][] matrizEjemplo = {
+            {"1", "2", "3"},
+            {"4", "5", "6"},
+            {"7", "8", "9"}
+        };
+
+        FormatoLatex.mostrarMatrizVentana(matrizEjemplo, 20f);
+        
     }
-     
+
     /**
      * @param args the command line arguments
      */
@@ -113,7 +123,7 @@ public class Prueba extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
