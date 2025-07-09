@@ -63,7 +63,7 @@ public class FormatoLatex {
         return label;
     }
 
-    public static void mostrarFormulaenVentana(String formulaLatex, float tamaño) {
+    public static void mostrarFormulaEnVentana(String formulaLatex, float tamaño) {
         JFrame ventana = new JFrame("Formula latex");
         ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ventana.setSize(400, 200);

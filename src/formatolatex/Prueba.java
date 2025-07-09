@@ -84,7 +84,7 @@ public class Prueba extends javax.swing.JFrame {
         // Renderizar imagen
         FormatoLatex.renderizarFormula("\\int_a^b f(x)\\ dx", 30, "integral");
        
-        FormatoLatex.mostrarFormulaenVentana("\\int_a^b f(x)\\ dx", 30);
+        FormatoLatex.mostrarFormulaEnVentana("\\int_a^b f(x)\\ dx", 30);
     }
      
     /**
